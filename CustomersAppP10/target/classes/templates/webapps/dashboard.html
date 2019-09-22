@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="http://www.thymeleaf.org"
+      layout:decorate="~{layouts/masterlayout.html}">
+
+  <head>
+
+  </head>
+<!--Loads all customers from the databases-->
+<body onload="loadCustomers()">
+  <th:block layout:fragment="content">
+<!--  layout block-->
+
+      <!-- Good luck -->
+          <div class="mx-auto col-sm-12">
+          <span style="width:25%;float: left;"> <h2>Customer Dashboard</h2></span>
+              <div class="container" style="width: 35%;float: left;">
+                  <div class="span4 pull-right">
+                      <div class="alert alert-info fade">
+                          <button type="button" class="close" data-dismiss="alert">×</button>
+                          <strong>Successful!</strong> Customer deleted successfully.
+                      </div>
+                  </div></div>
+          <span ><br>
+              <div class="collapse navbar-collapse" id="navbarSupportedContent" style="width:35%;float: right;">
+
+                <div class="form-inline ml-auto"  >
+                    <div class="md-form my-0">
+                        <input id="search-bar" class="form-control" type="text" name="search" required placeholder="Search" aria-label="Search"  onkeyup="search()">
+                        <button href="#!" class="btn btn-primary btn-md my-0 ml-sm-2" onclick="searchData()"><i class="glyphicon glyphicon-search"></i> Search</button>
+                    </div>
+                </div>
+              </div>
+
+              <br>
+          </span>
+          <hr>
+                            <!--    Div that contains customers list in a table format-->
+          <div id="customers-div" class="mx-auto col-sm-12" style="box-shadow: 1px 1px 1px 2px gray;padding:2%">
+
+
+
+
+            </div>
+          <div class="container" >
+              <ul class="pagination pagination-lg">
+                  <li id="prev-page" hidden><a href="#" onclick="function decrementPNo() {
+                      pageNo=pageNo-1;
+                      populateCustomer(customerData);
+                  }
+                  decrementPNo()">&laquo; Previous</a></li>
+                  <li><a href="#"id="curr-page"></a></li>
+                  <li id="next-page"><a href="#" onclick="function incrementPno() {
+                      pageNo+=1;
+                      populateCustomer(customerData);
+                  }
+                  incrementPno()">Next &raquo;</a></li>
+              </ul>
+          </div>
+      </div>
+<!--    The model for viewing the profile-->
+    <div class="container">
+      <div class="modal fade" id="profileModel" role="dialog">
+        <div class="modal-dialog modal-md">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title">Customer Profile</h4>
+            </div>
+            <div class="modal-body" style="margin: auto;">
+              <div id="customer-profile">
+                <p id="customer-name"></p>
+                <div class="row">
+                  <div id="customer-bio-data" class="col-sm-7 text-left"  >
+
+                  </div>
+                  <div id="customer-interests" class="col-sm-5 text-left" >
+
+                  </div>
+                </div>
+
+
+                <div id="customer-orders" class="text-left">
+                  There was an error! <br>Customer no longer exists in the system. Refresh to get latest records
+                </div>
+
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+    </div>
+      <script src="/js/mainjs.js"></script>
+  </th:block>
+  </body>
+</html>

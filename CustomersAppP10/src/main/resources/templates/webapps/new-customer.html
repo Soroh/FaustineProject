@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="http://www.thymeleaf.org"
+      layout:decorate="~{layouts/masterlayout.html}">
+
+<head>
+
+</head>
+<body>
+<th:block layout:fragment="content">
+    <!--  layout block-->
+
+
+    <h1>Customer Registration Form</h1>
+    <!--    Div that contains customer form-->
+    <div class=" text-left mx-auto " style="width:70%;margin:0 auto" >
+        <!--/*@thymesVar id="customer" type="aj"*/-->
+        <form action="#" th:action="@{/home/savecustomer}"  th:object="${customer}"  method="post">
+            <input type="hidden" th:field="*{customerId}" name="customerId" class="form-control"  >
+            <input type="hidden" th:field="*{createdAt}" name="createdAt" class="form-control"  >
+
+            <div class="form-row" >
+                <!--                    Start of input components-->
+                <div class="form-group col-md-6">
+
+                    First Name:  <span th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}" style="color: red" ></span><br>
+                    <input type="text" th:field="*{firstName}" name="firstName" class="form-control" required placeholder="First Name" pattern="([a-zA-Z]).{1,}"
+                    title="Invalid Name">
+                </div>
+                <div class="form-group col-md-6">
+
+                    Last Name:<span th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}" style="color: red" > </span> <br>
+                    <input type="text" th:field="*{lastName}" name="lastName" class="form-control" required placeholder="Last Name"
+                     pattern="([a-zA-Z]).{1,}" title="Invalid Name">
+                </div>
+                <div class="form-group col-md-6">
+
+                    Email Address: <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}" style="color: red" ></span><br>
+                    <input type="email" th:field="*{email}" name="email" class="form-control" required placeholder="Email Address">
+                </div>
+                <div class="form-group col-md-6">
+                    IP Address: <span th:if="${#fields.hasErrors('ip')}" th:errors="*{ip}"   style="color: red" ></span>
+                    <br>
+                    <input type="text" th:field="*{ip}" name="ip" class="form-control" required placeholder="IP Address e.g 19.65.78.62"
+                           pattern="[0-9]{1,3}[.][0-9]{1,3}.[0-9]{1,3}[.][0-9]{1,3}"title="Invalid IP Address">
+                </div>
+                <div class="form-group col-md-6">
+                    Latitude:<span th:if="${#fields.hasErrors('latitude')}" th:errors="*{latitude}" style="color: red" ></span>
+                    <br>
+                    <input type="text" th:field="*{latitude}" name="latitude" class="form-control" required placeholder="Latitude"
+                           pattern="[0-9]{1,}[.][0-9]{1,}" title="Invalid latitude value">
+                </div>
+                <div class="form-group col-md-6">
+
+                    Longitude:<span th:if="${#fields.hasErrors('longitude')}" th:errors="*{longitude}" style="color: red" ></span> <br>
+                    <input text="text" th:field="*{longitude}" name="longitude" class="form-control" required placeholder="Longitude"
+                           pattern="[0-9]{1,}[.][0-9]{1,}" title="Invalid longitude value">
+                </div>
+
+                <div class="form-group col-md-12 text-center" style="text-align: center; ">
+                    <br>
+                    <button type="submit" class="btn btn-primary btn-lg">Submit</button>
+                    <button type="reset" class="btn btn-primary btn-lg">Cancel</button>
+                </div>
+            </div>
+
+        </form>
+    </div>
+    </th:block>
+</body>
+</html>
