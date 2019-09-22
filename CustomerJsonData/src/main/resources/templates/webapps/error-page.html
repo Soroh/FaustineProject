@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="http://www.thymeleaf.org"
+      layout:decorate="~{layouts/masterlayout.html}">
+
+<head>
+
+</head>
+<body>
+<th:block layout:fragment="content">
+    <!--  layout block-->
+
+
+    <h1>Error</h1>
+    <!--    Div that contains customer form-->
+    <div class=" text-left mx-auto bg-warning" style="width:70%;margin:0 auto" >
+        <div class="alert alert-warning" role="alert">
+            <h4 class="alert-heading">Something Went Wrong!!</h4>
+            <p>Our developers are working on fixing it as soon as possible.</p>
+            <p>Other services are still available.... Click on the link below to access the home page</p>
+            <hr>
+            <a href="http://localhost:8080" class="mb-0"><button class="btn btn-primary"><i class="glyphicon glyphicon-home"></i> Home</button> </a>
+        </div>
+    </div>
+</th:block>
+</body>
+</html>
